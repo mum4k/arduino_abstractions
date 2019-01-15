@@ -3,7 +3,7 @@ new_git_repository(
     name = "googletest",
     build_file = "external_deps/gmock.BUILD",
     remote = "https://github.com/google/googletest",
-    tag = "release-1.8.0",
+    tag = "release-1.8.1",
 )
 
 bind(
@@ -23,7 +23,7 @@ load("@bazel_tools//tools/build_defs/repo:git.bzl", "git_repository")
 git_repository(
     name = "platformio_rules",
     remote = "https://github.com/mum4k/platformio_rules.git",
-    tag = "v0.0.1",
+    tag = "v0.0.2",
 )
 
 # Adafruit: Unified Sensor Driver.
@@ -51,7 +51,7 @@ bind(
 new_git_repository(
     name = "com_github_Adafruit_DHT",
     remote = "https://github.com/adafruit/DHT-sensor-library.git",
-    tag = "1.3.0",
+    tag = "1.3.1",
     build_file_content = """
 load("@platformio_rules//platformio:platformio.bzl", "platformio_library")
 
@@ -107,7 +107,7 @@ bind(
 new_git_repository(
     name = "com_github_Adafruit_GFX",
     remote = "https://github.com/adafruit/Adafruit-GFX-Library.git",
-    tag = "1.1.9",
+    tag = "1.3.6",
     build_file_content = """
 load("@platformio_rules//platformio:platformio.bzl", "platformio_library")
 
