@@ -28,7 +28,7 @@ cc_library(
     hdrs = ["adafruit_pcd8544_interface_mock.h"],
     deps = [
         ":adafruit_pcd8544_interface",
-        "//external:gtest",
+        "@com_google_googletest//:gtest",
     ],
 )
 
@@ -38,7 +38,7 @@ cc_test(
     deps = [
         ":adafruit_pcd8544_interface",
         ":adafruit_pcd8544_interface_mock",
-        "//external:gtest_main",
+        "@com_google_googletest//:gtest_main",
     ],
 )
 
