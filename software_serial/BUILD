@@ -28,7 +28,7 @@ cc_library(
     hdrs = ["software_serial_interface_mock.h"],
     deps = [
         ":software_serial_interface",
-        "//external:gtest",
+        "@com_google_googletest//:gtest",
     ],
 )
 
@@ -38,7 +38,7 @@ cc_test(
     deps = [
         ":software_serial_interface",
         ":software_serial_interface_mock",
-        "//external:gtest_main",
+        "@com_google_googletest//:gtest_main",
     ],
 )
 

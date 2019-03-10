@@ -28,7 +28,7 @@ cc_library(
     hdrs = ["dht_interface_mock.h"],
     deps = [
         ":dht_interface",
-        "//external:gtest",
+        "@com_google_googletest//:gtest",
     ],
 )
 
@@ -38,7 +38,7 @@ cc_test(
     deps = [
         ":dht_interface",
         ":dht_interface_mock",
-        "//external:gtest_main",
+        "@com_google_googletest//:gtest_main",
     ],
 )
 
