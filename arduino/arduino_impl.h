@@ -31,6 +31,12 @@ public:
 
   virtual int DigitalRead(uint8_t pin) const override;
   virtual void DigitalWrite(uint8_t pin, uint8_t value) const override;
+  
+  virtual int AnalogRead(uint8_t pin) const override;
+  virtual void AnaloglWrite(uint8_t pin, uint8_t value) const override;
+
+  virtual void PinMode(uint8_t pin, uint8_t mode) const override;
+
   virtual unsigned long Millis(void) const override;
   virtual void Delay(unsigned long ms) const override;
 };

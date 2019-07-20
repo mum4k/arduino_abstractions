@@ -36,6 +36,18 @@ public:
   // https://www.arduino.cc/en/Reference/DigitalWrite
   virtual void DigitalWrite(uint8_t pin, uint8_t value) const = 0;
 
+  // Reads the value from a specified digital pin, between 0 and 255.
+  // https://www.arduino.cc/en/Reference/AnalogRead
+  virtual int AnalogRead(uint8_t pin) const = 0;
+
+  // Write a value between 0 and 255 to a digital pin.
+  // https://www.arduino.cc/en/Reference/AnalogWrite
+  virtual void AnalogWrite(uint8_t pin, uint8_t value) const = 0;
+
+  // Sets the mode of the pin. Can be INPUT, OUTPUT or INPUT_PULLUP
+  // https://www.arduino.cc/en/Reference/PinMode
+  virtual void PinMode(uint8_t pin, uint8_t mode) const = 0;
+
   // Returns the number of milliseconds since the Arduino board began running
   // the current program. This number will overflow (go back to zero), after
   // approximately 50 days.
