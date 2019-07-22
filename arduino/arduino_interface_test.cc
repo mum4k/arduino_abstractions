@@ -26,6 +26,7 @@ namespace arduino {
 namespace {
 
 const uint8_t kOn = 1;
+const uint8_t kAnalog = 120;
 const uint8_t kPinNumber = 13;
 
 // Turns on the provided pin number.
@@ -33,9 +34,24 @@ void WriteHighToPin(const arduino::ArduinoInterface &ino, uint8_t pin_number) {
   ino.DigitalWrite(pin_number, kOn);
 }
 
-// Reads value from the provided pin.
+// Reads digital value from the provided pin.
 int ReadFromPin(const arduino::ArduinoInterface &ino, uint8_t pin_number) {
   return ino.DigitalRead(pin_number);
+}
+
+// Assigns analog value to provided pin.
+void WriteAnalogToPin(const arduino::ArduinoInterface &ino, uint8_t pin_number, uint8_t value) {
+  ino.AnalogWrite(pin_number, 120);
+}
+
+// Reads analog value from the provided pin.
+int ReadAnalogFromPin(const arduino::ArduinoInterface &ino, uint8_t pin_number) {
+  return ino.AnalogRead(pin_number);
+}
+
+// Sets the provided pin to accept INPUT
+void SetPinModeInput(const arduino::ArduinoInterface &ino, uint8_t pin_number) {
+  ino.PinMode(pin_number, 0);
 }
 
 // Sleeps for the provided amount of milliseconds and returns the number of
@@ -62,6 +78,22 @@ TEST_F(ArduinoInterfaceTest, MocksDigitalRead) {
   const int expected = 42;
   EXPECT_CALL(mock_, DigitalRead(kPinNumber)).WillOnce(Return(expected));
   EXPECT_EQ(expected, ReadFromPin(mock_, kPinNumber));
+}
+
+TEST_F(ArduinoInterfaceTest, MocksAnalogWrite) {
+  EXPECT_CALL(mock_, AnalogWrite(kPinNumber, kAnalog));
+  WriteHighToPin(mock_, kPinNumber);
+}
+
+TEST_F(ArduinoInterfaceTest, MocksAnalogRead) {
+  const int expected = 42;
+  EXPECT_CALL(mock_, AnalogRead(kPinNumber)).WillOnce(Return(expected));
+  EXPECT_EQ(expected, ReadFromPin(mock_, kPinNumber));
+}
+
+TEST_F(ArduinoInterfaceTest, MocksPinMode) {
+  EXPECT_CALL(mock_, PinMode(kPinNumber, kOn));
+  WriteHighToPin(mock_, kPinNumber);
 }
 
 TEST_F(ArduinoInterfaceTest, MocksDelayAndMillis) {
