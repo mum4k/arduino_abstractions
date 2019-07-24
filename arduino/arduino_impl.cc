@@ -33,8 +33,8 @@ void ArduinoImpl::AnalogWrite(uint8_t pin, uint8_t value) const {
   return analogWrite(pin, value);
 }
 
-void AdruinoImpl::PinMode(uint8_t pin, uint8_t mode) const {
-  return pinMode(pin, value);
+void ArduinoImpl::PinMode(uint8_t pin, uint8_t mode) const {
+  return pinMode(pin, mode);
 }
 
 unsigned long ArduinoImpl::Millis(void) const { return millis(); }
