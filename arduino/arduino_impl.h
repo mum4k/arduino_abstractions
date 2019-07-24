@@ -33,7 +33,7 @@ public:
   virtual void DigitalWrite(uint8_t pin, uint8_t value) const override;
   
   virtual int AnalogRead(uint8_t pin) const override;
-  virtual void AnaloglWrite(uint8_t pin, uint8_t value) const override;
+  virtual void AnalogWrite(uint8_t pin, uint8_t value) const override;
 
   virtual void PinMode(uint8_t pin, uint8_t mode) const override;
 
