@@ -15,7 +15,7 @@ load("@bazel_tools//tools/build_defs/repo:git.bzl", "new_git_repository")
 git_repository(
     name = "platformio_rules",
     remote = "https://github.com/mum4k/platformio_rules.git",
-    tag = "v0.0.3",
+    tag = "v0.0.5",
 )
 
 # Adafruit: Unified Sensor Driver.
