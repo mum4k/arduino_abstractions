@@ -30,6 +30,9 @@ class ArduinoInterfaceMock : public ArduinoInterface {
 public:
   MOCK_CONST_METHOD1(DigitalRead, int(uint8_t pin));
   MOCK_CONST_METHOD2(DigitalWrite, void(uint8_t pin, uint8_t value));
+  MOCK_CONST_METHOD1(AnalogRead, int(uint8_t pin));
+  MOCK_CONST_METHOD2(AnalogWrite, void(uint8_t pin, uint8_t value));
+  MOCK_CONST_METHOD2(PinMode, void(uint8_t pin, uint8_t mode));
   MOCK_CONST_METHOD0(Millis, unsigned long());
   MOCK_CONST_METHOD1(Delay, void(unsigned long ms));
 };

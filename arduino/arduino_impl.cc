@@ -27,6 +27,16 @@ void ArduinoImpl::DigitalWrite(uint8_t pin, uint8_t value) const {
   return digitalWrite(pin, value);
 }
 
+int ArduinoImpl::AnalogRead(uint8_t pin) const { return analogRead(pin); }
+
+void ArduinoImpl::AnalogWrite(uint8_t pin, uint8_t value) const {
+  return analogWrite(pin, value);
+}
+
+void ArduinoImpl::PinMode(uint8_t pin, uint8_t mode) const {
+  return pinMode(pin, mode);
+}
+
 unsigned long ArduinoImpl::Millis(void) const { return millis(); }
 
 void ArduinoImpl::Delay(unsigned long ms) const { delay(ms); }
