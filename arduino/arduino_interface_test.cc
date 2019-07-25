@@ -93,7 +93,7 @@ TEST_F(ArduinoInterfaceTest, MocksAnalogRead) {
 
 TEST_F(ArduinoInterfaceTest, MocksPinMode) {
   EXPECT_CALL(mock_, PinMode(kPinNumber, kOn));
-  WriteHighToPin(mock_, kPinNumber);
+  SetPinModeInput(mock_, kPinNumber);
 }
 
 TEST_F(ArduinoInterfaceTest, MocksDelayAndMillis) {
