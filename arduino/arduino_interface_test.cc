@@ -82,13 +82,13 @@ TEST_F(ArduinoInterfaceTest, MocksDigitalRead) {
 
 TEST_F(ArduinoInterfaceTest, MocksAnalogWrite) {
   EXPECT_CALL(mock_, AnalogWrite(kPinNumber, kAnalog));
-  WriteHighToPin(mock_, kPinNumber);
+  WriteAnalogToPin(mock_, kPinNumber, kAnalog);
 }
 
 TEST_F(ArduinoInterfaceTest, MocksAnalogRead) {
   const int expected = 42;
   EXPECT_CALL(mock_, AnalogRead(kPinNumber)).WillOnce(Return(expected));
-  EXPECT_EQ(expected, ReadFromPin(mock_, kPinNumber));
+  EXPECT_EQ(expected, ReadAnalogFromPin(mock_, kPinNumber));
 }
 
 TEST_F(ArduinoInterfaceTest, MocksPinMode) {
