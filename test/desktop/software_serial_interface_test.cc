@@ -13,8 +13,6 @@
 // limitations under the License.
 
 #include "software_serial/software_serial_interface.h"
-
-#include <stdint.h>
 #include "software_serial/software_serial_interface_mock.h"
 
 #include "gmock/gmock.h"
@@ -22,79 +20,94 @@
 
 using ::testing::Return;
 
-namespace arduino {
-namespace {
+namespace arduino
+{
+  namespace
+  {
 
-void CallInitialize(SoftwareSerialInterface *serial, long speed) {
-  serial->Initialize(speed);
-}
+    void CallInitialize(SoftwareSerialInterface *serial, long speed)
+    {
+      serial->Initialize(speed);
+    }
 
-int CallBytesAvailable(SoftwareSerialInterface *serial) {
-  return serial->BytesAvailable();
-}
+    int CallBytesAvailable(SoftwareSerialInterface *serial)
+    {
+      return serial->BytesAvailable();
+    }
 
-bool CallHadOverflow(SoftwareSerialInterface *serial) {
-  return serial->HadOverflow();
-}
+    bool CallHadOverflow(SoftwareSerialInterface *serial)
+    {
+      return serial->HadOverflow();
+    }
 
-void CallSetTimeout(SoftwareSerialInterface *serial, unsigned long timeout_ms) {
-  serial->SetTimeout(timeout_ms);
-}
+    void CallSetTimeout(SoftwareSerialInterface *serial, unsigned long timeout_ms)
+    {
+      serial->SetTimeout(timeout_ms);
+    }
 
-size_t CallWriteBytes(SoftwareSerialInterface *serial, const char *data) {
-  return serial->WriteBytes(data);
-}
+    size_t CallWriteBytes(SoftwareSerialInterface *serial, const char *data)
+    {
+      return serial->WriteBytes(data);
+    }
 
-size_t CallReadBytes(SoftwareSerialInterface *serial, size_t length,
-                     char *buffer) {
-  return serial->ReadBytes(length, buffer);
-}
+    size_t CallReadBytes(SoftwareSerialInterface *serial, size_t length,
+                         char *buffer)
+    {
+      return serial->ReadBytes(length, buffer);
+    }
 
-class SoftwareSerialInterfaceTest : public ::testing::Test {
-protected:
-  SoftwareSerialInterfaceTest() {}
+    class SoftwareSerialInterfaceTest : public ::testing::Test
+    {
+    protected:
+      SoftwareSerialInterfaceTest() {}
 
-  SoftwareSerialInterfaceMock mock_;
-};
+      SoftwareSerialInterfaceMock mock_;
+    };
 
-TEST_F(SoftwareSerialInterfaceTest, MocksInitialize) {
-  const long speed = 9600;
-  EXPECT_CALL(mock_, Initialize(speed));
-  CallInitialize(&mock_, speed);
-}
+    TEST_F(SoftwareSerialInterfaceTest, MocksInitialize)
+    {
+      const long speed = 9600;
+      EXPECT_CALL(mock_, Initialize(speed));
+      CallInitialize(&mock_, speed);
+    }
 
-TEST_F(SoftwareSerialInterfaceTest, MocksBytesAvailable) {
-  const int expected = 42;
-  EXPECT_CALL(mock_, BytesAvailable()).WillOnce(Return(expected));
-  EXPECT_EQ(expected, CallBytesAvailable(&mock_));
-}
+    TEST_F(SoftwareSerialInterfaceTest, MocksBytesAvailable)
+    {
+      const int expected = 42;
+      EXPECT_CALL(mock_, BytesAvailable()).WillOnce(Return(expected));
+      EXPECT_EQ(expected, CallBytesAvailable(&mock_));
+    }
 
-TEST_F(SoftwareSerialInterfaceTest, MocksHadOverflow) {
-  const bool expected = true;
-  EXPECT_CALL(mock_, HadOverflow()).WillOnce(Return(expected));
-  EXPECT_EQ(expected, CallHadOverflow(&mock_));
-}
+    TEST_F(SoftwareSerialInterfaceTest, MocksHadOverflow)
+    {
+      const bool expected = true;
+      EXPECT_CALL(mock_, HadOverflow()).WillOnce(Return(expected));
+      EXPECT_EQ(expected, CallHadOverflow(&mock_));
+    }
 
-TEST_F(SoftwareSerialInterfaceTest, MocksSetTimeout) {
-  const unsigned long timeout_ms = 42;
-  EXPECT_CALL(mock_, SetTimeout(timeout_ms));
-  CallSetTimeout(&mock_, timeout_ms);
-}
+    TEST_F(SoftwareSerialInterfaceTest, MocksSetTimeout)
+    {
+      const unsigned long timeout_ms = 42;
+      EXPECT_CALL(mock_, SetTimeout(timeout_ms));
+      CallSetTimeout(&mock_, timeout_ms);
+    }
 
-TEST_F(SoftwareSerialInterfaceTest, MocksWriteBytes) {
-  const char data[] = "data";
-  const size_t expected = 1;
-  EXPECT_CALL(mock_, WriteBytes(data)).WillOnce(Return(expected));
-  EXPECT_EQ(expected, CallWriteBytes(&mock_, data));
-}
+    TEST_F(SoftwareSerialInterfaceTest, MocksWriteBytes)
+    {
+      const char data[] = "data";
+      const size_t expected = 1;
+      EXPECT_CALL(mock_, WriteBytes(data)).WillOnce(Return(expected));
+      EXPECT_EQ(expected, CallWriteBytes(&mock_, data));
+    }
 
-TEST_F(SoftwareSerialInterfaceTest, MocksReadBytes) {
-  const size_t length = 2;
-  char buffer[length];
-  const size_t expected = 1;
-  EXPECT_CALL(mock_, ReadBytes(length, buffer)).WillOnce(Return(expected));
-  EXPECT_EQ(expected, CallReadBytes(&mock_, length, buffer));
-}
+    TEST_F(SoftwareSerialInterfaceTest, MocksReadBytes)
+    {
+      const size_t length = 2;
+      char buffer[length];
+      const size_t expected = 1;
+      EXPECT_CALL(mock_, ReadBytes(length, buffer)).WillOnce(Return(expected));
+      EXPECT_EQ(expected, CallReadBytes(&mock_, length, buffer));
+    }
 
-} // namespace
+  } // namespace
 } // namespace arduino

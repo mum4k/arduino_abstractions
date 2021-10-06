@@ -13,51 +13,52 @@
 // limitations under the License.
 
 #include "adafruit_dht/dht_interface.h"
-
-#include <stdint.h>
-
 #include "adafruit_dht/dht_interface_mock.h"
 
-/*
 #include "gmock/gmock.h"
 #include "gtest/gtest.h"
-*/
 
 using ::testing::Return;
+namespace arduino
+{
+  namespace
+  {
 
-namespace arduino {
-namespace {
+    float CallReadTemperature(AdafruitDhtInterface *sensor, TemperatureScale scale,
+                              ReadMode mode)
+    {
+      return sensor->ReadTemperature(scale, mode);
+    }
 
-float CallReadTemperature(AdafruitDhtInterface *sensor, TemperatureScale scale,
-                          ReadMode mode) {
-  return sensor->ReadTemperature(scale, mode);
-}
+    float CallReadHumidity(AdafruitDhtInterface *sensor, ReadMode mode)
+    {
+      return sensor->ReadHumidity(mode);
+    }
 
-float CallReadHumidity(AdafruitDhtInterface *sensor, ReadMode mode) {
-  return sensor->ReadHumidity(mode);
-}
+    class AdafruitDhtInterfaceTest : public ::testing::Test
+    {
+    protected:
+      AdafruitDhtInterfaceTest() {}
 
-class AdafruitDhtInterfaceTest : public ::testing::Test {
-protected:
-  AdafruitDhtInterfaceTest() {}
+      AdafruitDhtInterfaceMock mock_;
+    };
 
-  AdafruitDhtInterfaceMock mock_;
-};
+    TEST_F(AdafruitDhtInterfaceTest, MocksReadTemperature)
+    {
+      TemperatureScale scale = SCALE_CELCIUS;
+      ReadMode mode = READ_MODE_SAFE;
+      const float expected = 20.0;
+      EXPECT_CALL(mock_, ReadTemperature(scale, mode)).WillOnce(Return(expected));
+      EXPECT_EQ(expected, CallReadTemperature(&mock_, scale, mode));
+    }
 
-TEST_F(AdafruitDhtInterfaceTest, MocksReadTemperature) {
-  TemperatureScale scale = SCALE_CELCIUS;
-  ReadMode mode = READ_MODE_SAFE;
-  const float expected = 20.0;
-  EXPECT_CALL(mock_, ReadTemperature(scale, mode)).WillOnce(Return(expected));
-  EXPECT_EQ(expected, CallReadTemperature(&mock_, scale, mode));
-}
+    TEST_F(AdafruitDhtInterfaceTest, MocksReadHumidity)
+    {
+      ReadMode mode = READ_MODE_SAFE;
+      const float expected = 90.0;
+      EXPECT_CALL(mock_, ReadHumidity(mode)).WillOnce(Return(expected));
+      EXPECT_EQ(expected, CallReadHumidity(&mock_, mode));
+    }
 
-TEST_F(AdafruitDhtInterfaceTest, MocksReadHumidity) {
-  ReadMode mode = READ_MODE_SAFE;
-  const float expected = 90.0;
-  EXPECT_CALL(mock_, ReadHumidity(mode)).WillOnce(Return(expected));
-  EXPECT_EQ(expected, CallReadHumidity(&mock_, mode));
-}
-
-} // namespace
+  } // namespace
 } // namespace arduino

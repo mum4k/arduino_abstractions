@@ -13,10 +13,9 @@
 // limitations under the License.
 
 #include "arduino/arduino_interface_mock.h"
-/*
+
 #include "gmock/gmock.h"
 #include "gtest/gtest.h"
-*/
 
 using ::testing::Return;
 
@@ -25,7 +24,6 @@ namespace arduino
   namespace
   {
     const uint8_t kOn = 1;
-    const uint8_t kAnalog = 120;
     const uint8_t kPinNumber = 13;
 
     // Turns on the provided pin number.
@@ -43,7 +41,7 @@ namespace arduino
     // Assigns analog value to provided pin.
     void WriteAnalogToPin(const arduino::ArduinoInterface &ino, uint8_t pin_number, uint8_t value)
     {
-      ino.AnalogWrite(pin_number, 120);
+      ino.AnalogWrite(pin_number, value);
     }
 
     // Reads analog value from the provided pin.
@@ -89,6 +87,7 @@ namespace arduino
 
     TEST_F(ArduinoInterfaceTest, MocksAnalogWrite)
     {
+      const uint8_t kAnalog = 120;
       EXPECT_CALL(mock_, AnalogWrite(kPinNumber, kAnalog));
       WriteAnalogToPin(mock_, kPinNumber, kAnalog);
     }

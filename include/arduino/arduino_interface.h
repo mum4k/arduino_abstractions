@@ -44,7 +44,7 @@ public:
   // https://www.arduino.cc/en/Reference/AnalogWrite
   virtual void AnalogWrite(uint8_t pin, uint8_t value) const = 0;
 
-  // Sets the mode of the pin. Can be INPUT, OUTPUT or INPUT_PULLUP
+  // Sets the mode of the pin. Can be INPUT, OUTPUT or INPUT_PULLUP.
   // https://www.arduino.cc/en/Reference/PinMode
   virtual void PinMode(uint8_t pin, uint8_t mode) const = 0;
 
