@@ -1,0 +1,27 @@
+{
+  "name": "Arduino Abstractions",
+  "version": "0.1.0",
+  "description": "Arduino abstractions for unit tests",
+  "keywords": "wip, testing, tdd, mocks, googletest",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mum4k/arduino_abstractions.git"
+  },
+  "authors": [
+    {
+      "name": "mum4k",
+      "url": "https://github.com/mum4k",
+      "maintainer": true
+    },
+    {
+      "name": "kfern",
+      "url": "https://github.com/kfern",
+      "maintainer": true
+    }
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/mum4k/arduino_abstractions",
+  "dependencies": {},
+  "frameworks": "arduino",
+  "platforms": "*"
+}
