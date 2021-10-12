@@ -1,4 +1,7 @@
+
 # Arduino abstractions for unit tests
+
+![Build Status](https://github.com/mum4k/arduino_abstractions/actions/workflows/tests.yml/badge.svg?branch=master)
 
 A collection of virtual interfaces and
 [googletest](https://github.com/google/googletest) mocks for Arduino that
