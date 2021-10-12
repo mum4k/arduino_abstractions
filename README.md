@@ -1,7 +1,5 @@
 # Arduino abstractions for unit tests
 
-[![Build Status](https://travis-ci.org/mum4k/arduino_abstractions.svg?branch=master)](https://travis-ci.org/mum4k/arduino_abstractions)
-
 A collection of virtual interfaces and
 [googletest](https://github.com/google/googletest) mocks for Arduino that
 replace libraries directly interacting with the hardware.
