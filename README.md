@@ -1,4 +1,7 @@
+
 # Arduino abstractions for unit tests
+
+![Build Status](https://github.com/mum4k/arduino_abstractions/actions/workflows/tests.yml/badge.svg?branch=master)
 
 A collection of virtual interfaces and
 [googletest](https://github.com/google/googletest) mocks for Arduino that
@@ -35,9 +38,6 @@ The following abstractions are provided:
 *   **adafruit_pcd8544_interface.h** - abstraction for the [Adafruit PCD8544
     Nokia 5110 LCD
     library](https://github.com/adafruit/Adafruit-PCD8544-Nokia-5110-LCD-library).
-*   **software_serial_interface.h** - abstraction for the [Arduino's Software
-    Serial
-    library](https://github.com/arduino/Arduino/blob/master/hardware/arduino/avr/libraries/SoftwareSerial/src/SoftwareSerial.h).
 
 ## Details
 
