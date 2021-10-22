@@ -19,7 +19,15 @@
       "maintainer": true
     }
   ],
-  "license": "MIT",
+  "export": {
+    "exclude": [
+      ".gitignore",
+      ".github/*",
+      "test/*",
+      "todo/*"
+    ]
+  },  
+  "license": "Apache-2.0",
   "homepage": "https://github.com/mum4k/arduino_abstractions",
   "dependencies": {},
   "frameworks": "arduino",
