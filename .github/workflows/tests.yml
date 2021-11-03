@@ -44,6 +44,6 @@ jobs:
         platformio update
         platformio --version
     - name: Publish library
-      run: pio package publish
+      run: pio package publish --non-interactive
       env:
         PLATFORMIO_AUTH_TOKEN: ${{ secrets.PLATFORMIO_AUTH_TOKEN }}
